@@ -3,3 +3,4 @@
 	    Downloaded boilerplate, a default project from melonJS on which we will build the game
 	    Created a GitHub repository
 [4/7/2017]: Downloaded TiledMapEditor, a free tool for creating 2D maps for our game.
+	  : Replicated the tutorial game to learn the functionalities of melonJS
