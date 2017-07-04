@@ -1,0 +1,5 @@
+[3/7/2017]: Configured VisualStudio, created a default MVC solution
+	    Downloaded melonJS, a javascript library that we will use for our game
+	    Downloaded boilerplate, a default project from melonJS on which we will build the game
+	    Created a GitHub repository
+[4/7/2017]: Downloaded TiledMapEditor, a free tool for creating 2D maps for our game.
