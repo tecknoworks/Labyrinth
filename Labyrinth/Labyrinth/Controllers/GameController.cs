@@ -11,7 +11,7 @@ namespace Labyrinth.Controllers
         // GET: Game
         public ActionResult Index()
         {
-            return new FilePathResult("Content/Game/boilerplate/index.html", "text/html");
+            return View();
 
         }
     }
