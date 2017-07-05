@@ -37,6 +37,11 @@
 <!-- Bootstrap -->
 <script type="text/javascript">
     window.onReady(function onReady() {
-                game.onload();
+        var t0 = performance.now();
+
+        game.onload();
+        var t1 = performance.now();
+        alert("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+
             });
 </script>

@@ -4,3 +4,5 @@
 	    Created a GitHub repository
 [4/7/2017]: Downloaded TiledMapEditor, a free tool for creating 2D maps for our game.
 	  : Replicated the tutorial game to learn the functionalities of melonJS
+	  : Began integrating the game into the MVC application
+[5/7/2017]: Integrated the game into the MVC application
