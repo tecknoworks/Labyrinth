@@ -14,7 +14,15 @@ game.PlayerEntity = me.Entity.extend({
         this.body.setFriction(0.4, 0.4);
 
         // set the display around our position
-        me.game.viewport.follow(this, me.game.viewport.AXIS.BOTH);
+
+        // Create a vector that represents the player center point
+        this.center = new me.Vector2d(0, 30);
+
+        // Create the "tracking vector"
+        this.tracking = this.pos.clone();
+
+        me.game.viewport.follow(this.tracking, me.game.viewport.AXIS.BOTH);
+        me.game.viewport.setDeadzone(0, 0);
 
         // enable keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
@@ -43,7 +51,8 @@ game.PlayerEntity = me.Entity.extend({
 
     ------            */
     update: function (dt) {
-
+        // Update the "tracking vector"
+        this.tracking.copy(this.pos).add(this.center);
         if (me.input.isKeyPressed("left")) {
             // update the entity velocity
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
@@ -74,6 +83,7 @@ game.PlayerEntity = me.Entity.extend({
             this._super(me.Entity, "update", [dt]);
             return true;
         }
+
     },
 
     /**
