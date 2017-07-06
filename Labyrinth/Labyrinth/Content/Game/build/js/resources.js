@@ -40,9 +40,9 @@ game.resources = [
         "src": "/Content/Game/data/img/gui/title_screen.png"
     },
     {
-        "name": "area01_level_tiles",
+        "name": "map1_level_tiles",
         "type": "image",
-        "src": "/Content/Game/data/img/map/area01_level_tiles.png"
+        "src": "/Content/Game/data/img/map/map1_level_tiles.png"
     },
     {
         "name": "gripe_run_right",
@@ -60,8 +60,8 @@ game.resources = [
         "src": "Content/Game/data/img/sprite/wheelie_right.png"
     },
     {
-        "name": "area01",
+        "name": "map1",
         "type": "tmx",
-        "src": "Content/Game/data/map/area01.tmx"
+        "src": "Content/Game/data/map/map1.tmx"
     }
 ];
