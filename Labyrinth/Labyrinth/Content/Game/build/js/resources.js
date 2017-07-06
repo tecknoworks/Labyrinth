@@ -5,6 +5,16 @@ game.resources = [
         "src": "/Content/Game/data/bgm/"
     },
     {
+        "name": "meta_collide",
+        "type": "image",
+        "src": "/Content/Game/data/img/meta_collide.png"
+    },
+    {
+        "name": "Blank_Sprite_Sheet_4_2_by_KnightYamato",
+        "type": "image",
+        "src": "/Content/Game/data/img/Blank_Sprite_Sheet_4_2_by_KnightYamato.png"
+    },
+    {
         "name": "cling",
         "type": "audio",
         "src": "/Content/Game/data/sfx/"
