@@ -237,6 +237,7 @@
     <Content Include="Content\Game\data\img\gui\title_screen.png" />
     <Content Include="Content\Game\data\img\map\area01_level_tiles.png" />
     <Content Include="Content\Game\data\img\map\license.txt" />
+    <Content Include="Content\Game\data\img\map\map1_level_tiles.png" />
     <Content Include="Content\Game\data\img\sprite\gripe_run_right.png" />
     <Content Include="Content\Game\data\img\sprite\spinning_coin_gold.png" />
     <Content Include="Content\Game\data\img\sprite\wheelie_right.png" />
@@ -8474,6 +8475,7 @@
     <Content Include="Content\Game\package.json" />
     <Content Include="Content\Game\README.md" />
     <Content Include="App_Data\area01.tmx" />
+    <Content Include="Content\Game\data\map\map1.tmx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
