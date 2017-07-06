@@ -6,3 +6,4 @@
 	  : Replicated the tutorial game to learn the functionalities of melonJS
 	  : Began integrating the game into the MVC application
 [5/7/2017]: Integrated the game into the MVC application
+[6/7/2017]: Implemented the basic setting of the game, updated the canvas size, worked on new maps
