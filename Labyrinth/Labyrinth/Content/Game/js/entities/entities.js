@@ -133,6 +133,9 @@ game.EnemyEntity = me.Entity.extend({
         // define this here instead of tiled
         settings.image = "wheelie_right";
 
+        // disable gravity
+        me.sys.gravity = 0;
+
         // save the area size defined in Tiled
         var width = settings.width;
         var height = settings.height;
@@ -204,6 +207,7 @@ game.EnemyEntity = me.Entity.extend({
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
                 me.game.world.removeChild(this);
+                window.location = "http://www.google.com";
             }
             return false;
         }

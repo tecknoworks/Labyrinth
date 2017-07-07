@@ -50,6 +50,11 @@ game.resources = [
         "src": "/Content/Game/data/img/gui/title_screen.png"
     },
     {
+        "name": "mapabout_level_tiles",
+        "type": "image",
+        "src": "/Content/Game/data/img/map/mapabout_level_tiles.png"
+    },
+    {
         "name": "map1_level_tiles",
         "type": "image",
         "src": "/Content/Game/data/img/map/map1_level_tiles.png"
@@ -83,6 +88,11 @@ game.resources = [
         "name": "map2",
         "type": "tmx",
         "src": "Content/Game/data/map/map2.tmx"
+    },
+    {
+        "name": "mapabout",
+        "type": "tmx",
+        "src": "Content/Game/data/map/mapabout.tmx"
     },
     {
         "name": "PressStart2P",

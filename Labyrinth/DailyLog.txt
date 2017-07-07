@@ -7,3 +7,6 @@
 	  : Began integrating the game into the MVC application
 [5/7/2017]: Integrated the game into the MVC application
 [6/7/2017]: Implemented the basic setting of the game, updated the canvas size, worked on new maps
+[7/7/2017]: Implemented map2,mapabout -> connection between maps
+	    Redirection when colliding with enemy
+	    Implemented basic HUD, where the score is shown

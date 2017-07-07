@@ -18,7 +18,8 @@ game.PlayScreen = me.ScreenObject.extend({
     /**
      *  action to perform when leaving this screen (state change)
      */
-    onDestroyEvent: function() {
+    onDestroyEvent: function () {
+        alert(game.data.score);
         // remove the HUD from the game world
         me.game.world.removeChild(this.HUD);
 		me.audio.stopTrack();
