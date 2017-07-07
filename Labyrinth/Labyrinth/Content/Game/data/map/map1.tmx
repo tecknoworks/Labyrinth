@@ -34,7 +34,7 @@
    <properties>
     <property name="duration" type="int" value="250"/>
     <property name="fade" type="color" value="#00000000"/>
-    <property name="to" value="map1"/>
+    <property name="to" value="map2"/>
    </properties>
   </object>
   <object id="52" name="me.LevelEntity" x="380.5" y="441.5" width="32" height="32">

@@ -55,6 +55,11 @@ game.resources = [
         "src": "/Content/Game/data/img/map/map1_level_tiles.png"
     },
     {
+        "name": "map2_level_tiles",
+        "type": "image",
+        "src": "/Content/Game/data/img/map/map2_level_tiles.png"
+    },
+    {
         "name": "gripe_run_right",
         "type": "image",
         "src": "Content/Game/data/img/sprite/gripe_run_right.png"
@@ -73,6 +78,11 @@ game.resources = [
         "name": "map1",
         "type": "tmx",
         "src": "Content/Game/data/map/map1.tmx"
+    },
+    {
+        "name": "map2",
+        "type": "tmx",
+        "src": "Content/Game/data/map/map2.tmx"
     },
     {
         "name": "PressStart2P",

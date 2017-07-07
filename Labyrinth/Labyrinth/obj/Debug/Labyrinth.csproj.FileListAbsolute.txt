@@ -683,3 +683,4 @@ C:\Work\Laby1\Labyrinth\Labyrinth\Labyrinth\bin\ru-ru\MsieJavaScriptEngine.resou
 C:\Work\Laby1\Labyrinth\Labyrinth\Labyrinth\obj\Debug\Labyrinth.csprojResolveAssemblyReference.cache
 C:\Work\Laby1\Labyrinth\Labyrinth\Labyrinth\obj\Debug\Labyrinth.dll
 C:\Work\Laby1\Labyrinth\Labyrinth\Labyrinth\obj\Debug\Labyrinth.pdb
+C:\Solution\Labyrinth\Labyrinth\obj\Debug\Labyrinth.csprojResolveAssemblyReference.cache
