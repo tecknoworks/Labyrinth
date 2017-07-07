@@ -116,6 +116,7 @@ game.CoinEntity = me.CollectableEntity.extend({
         // make sure it cannot be collected "again"
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.audio.play("cling");
+        game.data.score += 1;
         // remove it
         me.game.world.removeChild(this);
 
@@ -210,4 +211,3 @@ game.EnemyEntity = me.Entity.extend({
         return true;
     }
 });
-

@@ -8,7 +8,7 @@ game.resources = [
 	/* 
 	 * Maps. 
  	 */
-	{ name: "map1", type: "tmx", src: "/Content/Game/data/map/map1.tmx" }
+	{ name: "map1", type: "tmx", src: "/Content/Game/data/map/map1.tmx" },
 
 	/* 
 	 * Background music. 
@@ -17,4 +17,8 @@ game.resources = [
 	/* 
 	 * Sound effects. 
 	 */
+
+     // game font
+    { name: "PressStart2P", type: "image", src: "/Content/Game/data/fnt/PressStart2P.png" },
+    { name: "PressStart2P", type:"binary", src: "/Content/Game/data/fnt/PressStart2P.fnt"}
 ];
