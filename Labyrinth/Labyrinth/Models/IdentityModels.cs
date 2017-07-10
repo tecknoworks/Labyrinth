@@ -29,5 +29,13 @@ namespace Labyrinth.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Labyrinth.Models.Player> Players { get; set; }
+
+        public System.Data.Entity.DbSet<Labyrinth.Models.Item> Items { get; set; }
+
+        public System.Data.Entity.DbSet<Labyrinth.Models.PlayerItem> PlayerItems { get; set; }
+
+        public System.Data.Entity.DbSet<Labyrinth.Models.Sell> Sells { get; set; }
     }
 }

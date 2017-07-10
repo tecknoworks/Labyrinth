@@ -259,14 +259,43 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlayerItemsController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\SellsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IISHandler1.cs" />
+    <Compile Include="Migrations\201707041008346_InitialCreate.cs" />
+    <Compile Include="Migrations\201707041008346_InitialCreate.Designer.cs">
+      <DependentUpon>201707041008346_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707101144009_Player.cs" />
+    <Compile Include="Migrations\201707101144009_Player.Designer.cs">
+      <DependentUpon>201707101144009_Player.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707101154281_Item.cs" />
+    <Compile Include="Migrations\201707101154281_Item.Designer.cs">
+      <DependentUpon>201707101154281_Item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707101209386_PlayerItem.cs" />
+    <Compile Include="Migrations\201707101209386_PlayerItem.Designer.cs">
+      <DependentUpon>201707101209386_PlayerItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707101216596_Sell.cs" />
+    <Compile Include="Migrations\201707101216596_Sell.Designer.cs">
+      <DependentUpon>201707101216596_Sell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerItem.cs" />
+    <Compile Include="Models\Sell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -8577,8 +8606,44 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Players\Create.cshtml" />
+    <Content Include="Views\Players\Delete.cshtml" />
+    <Content Include="Views\Players\Details.cshtml" />
+    <Content Include="Views\Players\Edit.cshtml" />
+    <Content Include="Views\Players\Index.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Items\Delete.cshtml" />
+    <Content Include="Views\Items\Details.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\PlayerItems\Create.cshtml" />
+    <Content Include="Views\PlayerItems\Delete.cshtml" />
+    <Content Include="Views\PlayerItems\Details.cshtml" />
+    <Content Include="Views\PlayerItems\Edit.cshtml" />
+    <Content Include="Views\PlayerItems\Index.cshtml" />
+    <Content Include="Views\Sells\Create.cshtml" />
+    <Content Include="Views\Sells\Delete.cshtml" />
+    <Content Include="Views\Sells\Details.cshtml" />
+    <Content Include="Views\Sells\Edit.cshtml" />
+    <Content Include="Views\Sells\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707041008346_InitialCreate.resx">
+      <DependentUpon>201707041008346_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707101144009_Player.resx">
+      <DependentUpon>201707101144009_Player.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707101154281_Item.resx">
+      <DependentUpon>201707101154281_Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707101209386_PlayerItem.resx">
+      <DependentUpon>201707101209386_PlayerItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707101216596_Sell.resx">
+      <DependentUpon>201707101216596_Sell.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
