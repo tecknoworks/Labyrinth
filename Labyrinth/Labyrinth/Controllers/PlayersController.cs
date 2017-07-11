@@ -13,7 +13,7 @@ namespace Labyrinth.Controllers
 {
     public class PlayersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext(); 
 
         // GET: Players
         public async Task<ActionResult> Index()
