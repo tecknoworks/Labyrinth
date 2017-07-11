@@ -11,3 +11,6 @@
 	    Redirection when colliding with enemy
 	    Implemented basic HUD, where the score is shown
 [10/7/2017]: Added the models in code and database
+[11/7/2017]: Restructured database, used a servered one
+	     Solved problems with git
+	     Started working on leaderboard
