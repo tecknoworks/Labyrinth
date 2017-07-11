@@ -260,6 +260,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\LeaderBoardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlayerItemsController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
@@ -268,33 +269,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IISHandler1.cs" />
-    <Compile Include="Migrations\201707041008346_InitialCreate.cs" />
-    <Compile Include="Migrations\201707041008346_InitialCreate.Designer.cs">
-      <DependentUpon>201707041008346_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707101144009_Player.cs" />
-    <Compile Include="Migrations\201707101144009_Player.Designer.cs">
-      <DependentUpon>201707101144009_Player.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707101154281_Item.cs" />
-    <Compile Include="Migrations\201707101154281_Item.Designer.cs">
-      <DependentUpon>201707101154281_Item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707101209386_PlayerItem.cs" />
-    <Compile Include="Migrations\201707101209386_PlayerItem.Designer.cs">
-      <DependentUpon>201707101209386_PlayerItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707101216596_Sell.cs" />
-    <Compile Include="Migrations\201707101216596_Sell.Designer.cs">
-      <DependentUpon>201707101216596_Sell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707110735197_Migrations.cs" />
-    <Compile Include="Migrations\201707110735197_Migrations.Designer.cs">
-      <DependentUpon>201707110735197_Migrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707110827094_Guid.cs" />
-    <Compile Include="Migrations\201707110827094_Guid.Designer.cs">
-      <DependentUpon>201707110827094_Guid.cs</DependentUpon>
+    <Compile Include="Migrations\201707111212561_initial.cs" />
+    <Compile Include="Migrations\201707111212561_initial.Designer.cs">
+      <DependentUpon>201707111212561_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -8634,29 +8611,7 @@
     <Content Include="Views\Sells\Details.cshtml" />
     <Content Include="Views\Sells\Edit.cshtml" />
     <Content Include="Views\Sells\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707041008346_InitialCreate.resx">
-      <DependentUpon>201707041008346_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707101144009_Player.resx">
-      <DependentUpon>201707101144009_Player.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707101154281_Item.resx">
-      <DependentUpon>201707101154281_Item.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707101209386_PlayerItem.resx">
-      <DependentUpon>201707101209386_PlayerItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707101216596_Sell.resx">
-      <DependentUpon>201707101216596_Sell.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707110735197_Migrations.resx">
-      <DependentUpon>201707110735197_Migrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707110827094_Guid.resx">
-      <DependentUpon>201707110827094_Guid.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\LeaderBoard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -8673,6 +8628,11 @@
     <TypeScriptCompile Include="Content\Game\node_modules\http2\typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="Content\Game\node_modules\http2\typings\index.d.ts" />
     <TypeScriptCompile Include="Content\Game\node_modules\iconv-lite\lib\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707111212561_initial.resx">
+      <DependentUpon>201707111212561_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
