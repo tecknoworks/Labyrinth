@@ -18,7 +18,10 @@ namespace Labyrinth.Controllers
         // GET: Players
         public async Task<ActionResult> Index()
         {
-            return View(await db.Players.ToListAsync());
+            // return View(await db.Players.ToListAsync());
+            // return View(await db.Players.OrderBy(p => p.Points).ToListAsync());
+            IOrderedEnumerable<Player> players = db.Players.ToList().OrderBy(x => x.Points);
+            return View(players);
         }
 
         // GET: Players/Details/5

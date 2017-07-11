@@ -9,8 +9,7 @@ namespace Labyrinth.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "Labyrinth.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Labyrinth.Models.ApplicationDbContext context)
