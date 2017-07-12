@@ -14,3 +14,7 @@
 [11/7/2017]: Restructured database, used a servered one
 	     Solved problems with git
 	     Started working on leaderboard
+[12/7/2017]: Added Nickname to the register
+	     Restructured account view to see gold and points when seeing your account
+	     Implemented Market
+	     Finished Leaderboard

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Labyrinth.Models.PlayerItem>
+@{
+    ViewBag.Title = "SellItems";
+}
+
+<h2>SellItems</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Item Name
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            Quantity to sell
+        </th>
+        <th>
+            Price to sell
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("sellItem", "Market", FormMethod.Post))
+        {
+            <tr>
+                    
+                <td>
+                    @Html.TextBox("name", item.Item.Name, new { @readonly = "readonly" })
+                    @Html.Hidden("itemId", item.Item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                    @Html.Hidden("itemQuant", item.Quantity)
+                </td>
+                <td>
+                    @Html.TextBox("quantity")
+                </td>
+                <td>
+                    @Html.TextBox("price")
+                </td>
+                <td>
+                   <input type="submit" name="Sell item" value="Sell item" />
+
+                </td>
+            </tr>
+        }
+    }
+
+</table>

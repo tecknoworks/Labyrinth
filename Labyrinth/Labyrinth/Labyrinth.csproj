@@ -262,6 +262,7 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LeaderBoardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarketController.cs" />
     <Compile Include="Controllers\PlayerItemsController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\SellsController.cs" />
@@ -8612,6 +8613,9 @@
     <Content Include="Views\Sells\Edit.cshtml" />
     <Content Include="Views\Sells\Index.cshtml" />
     <Content Include="Views\LeaderBoard\Index.cshtml" />
+    <Content Include="Views\Market\Index.cshtml" />
+    <Content Include="Views\Market\NoGold.cshtml" />
+    <Content Include="Views\Market\SellItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -8634,6 +8638,7 @@
       <DependentUpon>201707111212561_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

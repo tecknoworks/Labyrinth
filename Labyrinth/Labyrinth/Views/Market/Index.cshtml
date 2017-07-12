@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Labyrinth.Models.Sell>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Sell Items", "sellItems")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Item Name
+        </th>
+        <th>
+            Seller
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>Buy</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("buyItem", "Market", FormMethod.Post))
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Player.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    @Html.ActionLink("Buy Item", "buyItem", new { id = item.Id })
+ 
+            </td>
+        </tr>
+            }
+        }
+
+</table>
