@@ -154,7 +154,7 @@ namespace Labyrinth.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,6 +163,7 @@ namespace Labyrinth.Controllers
 
                     Player player = new Player();
                     player.Id = new Guid(user.Id);
+                    player.Nickname = model.Nickname;
 
                     //_playersController = new PlayersController();
                     //await _playersController.Create(player);
