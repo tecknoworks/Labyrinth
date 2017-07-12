@@ -13,7 +13,7 @@ namespace Labyrinth.Controllers
         // GET: LeaderBoard
         public ActionResult Index()
         {
-            IOrderedEnumerable<Player> players = db.Players.ToList().OrderBy(x => x.Points);
+            IOrderedEnumerable<Player> players = db.Players.ToList().OrderByDescending(x => x.Points);
             return View(players);
         }
     }
