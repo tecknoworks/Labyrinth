@@ -18,3 +18,7 @@
 	     Restructured account view to see gold and points when seeing your account
 	     Implemented Market
 	     Finished Leaderboard
+[13/7/2017]: Put images to Items
+	     Worked on marketplace Functionality
+	     Adding the score when player dies
+	     Worked on design 
