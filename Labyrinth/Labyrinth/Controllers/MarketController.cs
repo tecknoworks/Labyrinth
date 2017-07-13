@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Labyrinth.Controllers
 {
+    [Authorize(Roles = "Administrator, Regular")]
     public class MarketController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

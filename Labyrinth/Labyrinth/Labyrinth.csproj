@@ -6705,6 +6705,8 @@
     <Content Include="Content\Game\node_modules\yargs\lib\validation.js" />
     <Content Include="Content\Game\node_modules\yargs\node_modules\camelcase\index.js" />
     <Content Include="Content\Game\tasks\grunt-resources.js" />
+    <Content Include="Content\superhero.bootstrap.css" />
+    <Content Include="Content\superhero.bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
