@@ -65,33 +65,50 @@ namespace Labyrinth.Controllers
 
 
         [HttpPost]
-        public ActionResult sellItem(Item item, string itemId, string name, string quantity, string price)
+        public ActionResult sellItem( string itemId, string name, string quantity, string price, string itemQuant)
         {
             try
             {
-                var str = Int32.Parse(itemId);
+                var iditem = Int32.Parse(itemId);
                 var name1 = name;
                 int quant = Int32.Parse(quantity);
-                int pr = Int32.Parse(price);
+                int itemquant = Int32.Parse(itemQuant);
                 var seller = new Guid(User.Identity.GetUserId());
-                db.PlayerItems.Where(x => x.PlayerId == seller && x.ItemId == str).ToList().ForEach(x => x.Quantity -= quant);
-                Sell sell = new Sell();
-                sell.IsSold = false;
-                sell.Item = item;
-                sell.ItemId = str;
-                sell.Player = db.Players.Find(new Guid(User.Identity.GetUserId()));
-                sell.PlayerId = new Guid(User.Identity.GetUserId());
-                sell.Price = pr;
-                sell.Quantity = quant;
-                db.Sells.Add(sell);
-                db.SaveChanges();
-
-
+                if (quant <= itemquant && quant > 0)
+                {
+                    int pr = Int32.Parse(price);
+                    db.PlayerItems.Where(x => x.PlayerId == seller && x.ItemId == iditem).ToList().ForEach(x => x.Quantity -= quant);
+                    Sell sell = new Sell();
+                    sell.IsSold = false;
+                    sell.Item = db.Items.Find(iditem);
+                    sell.ItemId = iditem;
+                    sell.Player = db.Players.Find(new Guid(User.Identity.GetUserId()));
+                    sell.PlayerId = new Guid(User.Identity.GetUserId());
+                    sell.Price = pr;
+                    sell.Quantity = quant;
+                    db.Sells.Add(sell);
+                    db.SaveChanges();
+                }
                 return View("SellItems", db.PlayerItems.Where(x => x.PlayerId == seller).ToList());
+
+               
             }
             catch
             {
                 return View("NoGold");
+            }
+        }
+
+        public FileContentResult getImage(int id)
+        {
+            var image = db.Items.Find(id).Image;
+            if (image != null)
+            {
+                return new FileContentResult(image, "image/png");
+            }
+            else
+            {
+                return null;
             }
         }
     }

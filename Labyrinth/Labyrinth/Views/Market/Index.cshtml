@@ -13,6 +13,9 @@
             Item Name
         </th>
         <th>
+            Icon
+        </th>
+        <th>
             Seller
         </th>
         <th>
@@ -31,6 +34,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Item.Name)
+            </td>
+            <td>
+                <img src="@Url.Action("getImage", "Market", new { id = item.Item.Id } )" height="30px" width="30px" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Player.Nickname)

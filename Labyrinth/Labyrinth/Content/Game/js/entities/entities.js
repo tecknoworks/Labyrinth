@@ -207,7 +207,19 @@ game.EnemyEntity = me.Entity.extend({
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
                 me.game.world.removeChild(this);
-                window.location = "http://www.google.com";
+            //    $.ajax({
+            //        url: '/Game/YouDied',
+            //        type: 'GET',
+            //       // data: { },
+            //        success: function (data) { 
+            //            alert("success");
+            //    },
+            //        error: function (data) {
+            //            alert("error");
+            //    }
+                //});
+                window.location.href = url.replace('__score__', game.data.score);
+
             }
             return false;
         }

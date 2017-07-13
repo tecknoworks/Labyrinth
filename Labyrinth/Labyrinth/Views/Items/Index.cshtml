@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            <img src="@Url.Action("getImage", "Items", new { image = item.Image })" />
+            <img src="@Url.Action("getImage", "Items", new { id = item.Id } )" height="30px" width="30px" />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Labyrinth.Models;
+using System.Text;
 
 namespace Labyrinth.Controllers
 {
@@ -125,10 +126,17 @@ namespace Labyrinth.Controllers
             base.Dispose(disposing);
         }
 
-        public FileContentResult getImage(byte[] image)
+        public FileContentResult getImage(int id)
         {
-            var im = db.Items.Find(1).Image;
-            return new FileContentResult(image, "image/png");
+            var image = db.Items.Find(id).Image;
+            if (image!= null)
+            {
+                return new FileContentResult(image, "image/png");
+            }
+            else
+            {
+                return null;
+            }    
         }
     }
 }
