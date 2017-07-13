@@ -35,5 +35,6 @@
 
     </dl>
 
-    @Html.ActionLink("Change your account settings ", "Index", "Manage")
+    @*Html.ActionLink("Change your account settings ", "Index", "Manage")*@
+    <input type="button" class="btn btn-primary btn-sm" value="Change account settings" onclick="@("window.location.href='" + @Url.Action("Index", "Manage") + "'");" />
 </div>
