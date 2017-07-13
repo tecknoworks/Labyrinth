@@ -124,5 +124,11 @@ namespace Labyrinth.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public FileContentResult getImage(byte[] image)
+        {
+            var im = db.Items.Find(1).Image;
+            return new FileContentResult(image, "image/png");
+        }
     }
 }

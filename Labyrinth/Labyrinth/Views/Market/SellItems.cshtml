@@ -29,7 +29,9 @@
             <tr>
                     
                 <td>
-                    @Html.TextBox("name", item.Item.Name, new { @readonly = "readonly" })
+                    @Html.Hidden("name",item.Item.Name)
+                    @Html.DisplayFor(modelItem => item.Item.Name)
+                    @*@Html.TextBox("name", item.Item.Name, new { @readonly = "readonly" })*@
                     @Html.Hidden("itemId", item.Item.Id)
                 </td>
                 <td>
