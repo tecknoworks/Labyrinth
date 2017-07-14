@@ -276,10 +276,19 @@
     <Compile Include="Controllers\PlayerItemsController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\SellsController.cs" />
+    <Compile Include="controls\ctlChatBox.ascx.cs">
+      <DependentUpon>ctlChatBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\ctlChatBox.ascx.designer.cs">
+      <DependentUpon>ctlChatBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\MessageDetail.cs" />
+    <Compile Include="Hubs\UserDetail.cs" />
     <Compile Include="IISHandler1.cs" />
     <Compile Include="Migrations\201707111212561_initial.cs" />
     <Compile Include="Migrations\201707111212561_initial.Designer.cs">
@@ -351,6 +360,7 @@
     <Content Include="Content\theme.bootstrap.min.css" />
     <Content Include="Content\theme2.bootstrap.css" />
     <Content Include="Content\theme2.bootstrap.min.css" />
+    <Content Include="controls\ctlChatBox.ascx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -458,6 +468,7 @@
     <Content Include="Views\PlayerDetails\Index.cshtml" />
     <Content Include="Views\Game\YouDied.cshtml" />
     <Content Include="Views\Chat\Chat.cshtml" />
+    <Content Include="Views\Chat\Chat1to1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
