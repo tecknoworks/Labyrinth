@@ -17,7 +17,7 @@ namespace Labyrinth.Controllers
         public ActionResult Index()
         {
             var buyer = new Guid(User.Identity.GetUserId());
-            return View(db.Sells.ToList().OrderBy(item => item.ItemId).Where( item => item.IsSold == false && item.PlayerId != buyer));
+            return View(db.Sells.ToList().OrderBy(item => item.ItemId).Where( item => item.IsSold == false));
         }
 
         public ActionResult buyItem(int id)
@@ -50,7 +50,7 @@ namespace Labyrinth.Controllers
                     db.PlayerItems.Add(newPlayerItem);
                 }
                 db.SaveChanges();
-                return View("Index", db.Sells.ToList().OrderBy(item => item.ItemId).Where(item => item.IsSold == false && item.PlayerId != buyer));
+                return View("Index", db.Sells.ToList().OrderBy(item => item.ItemId).Where(item => item.IsSold == false));
             }
             else
             {
@@ -61,6 +61,32 @@ namespace Labyrinth.Controllers
         {
             var buyer = new Guid(User.Identity.GetUserId());
             return View("SellItems", db.PlayerItems.Where(x => x.PlayerId == buyer).ToList());
+        }
+
+        public ActionResult cancelItem(int id)
+        {
+            var sell = db.Sells.Find(id);
+            var user = new Guid(User.Identity.GetUserId());
+            var items = db.PlayerItems.Where(item => item.PlayerId == user && item.ItemId == sell.ItemId);
+            if (items.Count() != 0)
+            {
+                foreach (var pi in items)
+                {
+                    pi.Quantity += sell.Quantity;
+                }
+            }
+            else
+            {
+                PlayerItem newPlayerItem = new PlayerItem();
+                newPlayerItem.ItemId = sell.ItemId;
+                newPlayerItem.PlayerId = user;
+                newPlayerItem.Quantity = sell.Quantity;
+                newPlayerItem.Item = sell.Item;
+                newPlayerItem.Player = db.Players.Find(sell);
+                db.PlayerItems.Add(newPlayerItem);
+            }
+            db.SaveChanges();
+            return View("Index", db.Sells.ToList().OrderBy(item => item.ItemId).Where(item => item.IsSold == false));
         }
 
 
@@ -89,6 +115,8 @@ namespace Labyrinth.Controllers
                     db.Sells.Add(sell);
                     db.SaveChanges();
                 }
+                quantity = "";
+                price = "";
                 return View("SellItems", db.PlayerItems.Where(x => x.PlayerId == seller).ToList());
 
                

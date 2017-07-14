@@ -444,6 +444,7 @@
     <Content Include="Views\Market\NoGold.cshtml" />
     <Content Include="Views\Market\SellItems.cshtml" />
     <Content Include="Views\PlayerDetails\Index.cshtml" />
+    <Content Include="Views\Game\YouDied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

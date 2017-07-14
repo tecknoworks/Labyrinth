@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Labyrinth.Models.Sell>
-
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Index";
 }
@@ -29,14 +29,18 @@
 
     @foreach (var item in Model)
     {
-        using (Html.BeginForm("buyItem", "Market", FormMethod.Post))
+        if (item.PlayerId != new Guid(User.Identity.GetUserId()))
         {
+
+
+            using (Html.BeginForm("buyItem", "Market", FormMethod.Post))
+            {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Item.Name)
             </td>
             <td>
-                <img src="@Url.Action("getImage", "Market", new { id = item.Item.Id } )" height="30px" width="30px" />
+                <img src="@Url.Action("getImage", "Market", new { id = item.Item.Id })" height="30px" width="30px" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Player.Nickname)
@@ -52,6 +56,7 @@
  
             </td>
         </tr>
+                }
             }
         }
 
@@ -61,3 +66,54 @@
 
     @*Html.ActionLink("Sell Items", "sellItems")*@
 </p>
+
+<h3>My sales</h3>
+
+<table class="table table-hover">
+    <tr class="trcolor">
+        <th>
+            Item Name
+        </th>
+        <th>
+            Icon
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>Buy</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.PlayerId == new Guid(User.Identity.GetUserId()))
+        {
+
+
+            using (Html.BeginForm("cancelItem", "Market", FormMethod.Post))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item.Name)
+                    </td>
+                    <td>
+                        <img src="@Url.Action("getImage", "Market", new { id = item.Item.Id })" height="30px" width="30px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Cancel Sale", "cancelItem", new { id = item.Id })
+
+                    </td>
+                </tr>
+            }
+        }
+    }
+
+</table>

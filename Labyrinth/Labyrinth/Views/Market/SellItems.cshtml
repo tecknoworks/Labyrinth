@@ -31,7 +31,7 @@
             <tr>
                     
                 <td>
-                    @Html.Hidden("name",item.Item.Name)
+                    @Html.HiddenFor(modelItem => item.Item.Name, new { Name = "name", id = "name" })
                     @Html.DisplayFor(modelItem => item.Item.Name)
                     @*@Html.TextBox("name", item.Item.Name, new { @readonly = "readonly" })*@
                     @Html.HiddenFor(modelItem => item.Item.Id, new { Name = "itemId", id = "itemId" })
@@ -41,13 +41,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
-                    @Html.Hidden("itemQuant", item.Quantity)
+                    @Html.HiddenFor(modelItem => item.Quantity, new { Name = "itemQuant", id = "itemId" })
                 </td>
                 <td>
-                    @Html.TextBox("quantity")
+                    <input type="text" id="quantity" name="quantity" />
                 </td>
                 <td>
-                    @Html.TextBox("price")
+                    <input type="text" id="price" name="price" />
                 </td>
                 <td>
                    <input type="submit" name="Sell item" value="Sell item" />
