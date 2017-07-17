@@ -1,8 +1,28 @@
 ﻿@model IEnumerable<Labyrinth.Models.PlayerItem>
+@using Labyrinth.Models;
 @{
     ViewBag.Title = "SellItems";
+    ApplicationDbContext db = new ApplicationDbContext();
 }
-
+<script>
+    function TooMuch(idI, quanHave) {
+        quanSell = document.getElementById('quantity').value;
+        price = document.getElementById('price').value
+        alert(quanSell);
+        alert(price);
+        if (quanSell > quanHave) {
+            alert("Can't sell that much");
+        }
+        else {
+            var url = '@Html.Raw(Url.Action("sellItem", "Market", new { id = -1,  price = -2, quantity = -3, itemQuant = -4 }))';
+            url = url.replace('-1', idI);
+            url = url.replace('-2', price);
+            url = url.replace('-3', quanSell);
+            url = url.replace('-4', quanHave);
+            window.location = url;
+        }
+    }
+</script>
 <h2>Sell Items</h2>
 
 <table class="table">
@@ -22,6 +42,8 @@
         <th>
             Price to sell
         </th>
+        <th>
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -31,7 +53,7 @@
             <tr>
                     
                 <td>
-                    @Html.HiddenFor(modelItem => item.Item.Name, new { Name = "name", id = "name" })
+                    @*@Html.HiddenFor(modelItem => item.Item.Name, new { Name = "name", id = "name" })*@
                     @Html.DisplayFor(modelItem => item.Item.Name)
                     @*@Html.TextBox("name", item.Item.Name, new { @readonly = "readonly" })*@
                     @Html.HiddenFor(modelItem => item.Item.Id, new { Name = "itemId", id = "itemId" })
@@ -50,7 +72,7 @@
                     <input type="text" id="price" name="price" />
                 </td>
                 <td>
-                   <input type="submit" name="Sell item" value="Sell item" />
+                   <input type="submit" name="Sell item" class="btn-link" value="Sell item")" />
 
                 </td>
             </tr>

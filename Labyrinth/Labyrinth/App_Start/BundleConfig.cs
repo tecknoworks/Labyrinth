@@ -30,6 +30,7 @@ namespace Labyrinth
             bundles.Add(new StyleBundle("~/Content/css").Include(
             "~/Content/theme.bootstrap.css",
             "~/Content/site.css"));
+
         }
     }
 }
