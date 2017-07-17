@@ -17,5 +17,11 @@ namespace Labyrinth.Controllers
         {
             return View();
         }
+
+        public ActionResult PrivateChat()
+        {
+           return View();
+           // return Redirect("Views/Chat/PrivateChat.html");
+        }
     }
 }
