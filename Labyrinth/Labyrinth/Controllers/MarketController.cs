@@ -31,7 +31,7 @@ namespace Labyrinth.Controllers
                 sell.Player.Gold += sell.Price;
                 db.Players.Find(buyer).Gold -= sell.Price;
 
-                List<PlayerItem> playerItem = db.PlayerItems.Where(x => x.ItemId == sell.ItemId && x.PlayerId == sell.PlayerId).ToList();
+                List<PlayerItem> playerItem = db.PlayerItems.Where(x => x.ItemId == sell.ItemId && x.PlayerId == buyer).ToList();
                 if (playerItem.Count() != 0)
                 {
                     foreach (var pi in playerItem)
@@ -50,7 +50,8 @@ namespace Labyrinth.Controllers
                     db.PlayerItems.Add(newPlayerItem);
                 }
                 db.SaveChanges();
-                return View("Index", db.Sells.ToList().OrderBy(item => item.ItemId).Where(item => item.IsSold == false));
+                //return Content("<script language='javascript' type='text/javascript'>alert('Thanks for Feedback!');</script>");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -82,21 +83,21 @@ namespace Labyrinth.Controllers
                 newPlayerItem.PlayerId = user;
                 newPlayerItem.Quantity = sell.Quantity;
                 newPlayerItem.Item = sell.Item;
-                newPlayerItem.Player = db.Players.Find(sell);
+                newPlayerItem.Player = db.Players.Find(user);
                 db.PlayerItems.Add(newPlayerItem);
             }
+            db.Sells.Remove(sell);
             db.SaveChanges();
-            return View("Index", db.Sells.ToList().OrderBy(item => item.ItemId).Where(item => item.IsSold == false));
+            return RedirectToAction("Index");
         }
 
 
         [HttpPost]
-        public ActionResult sellItem( string itemId, string name, string quantity, string price, string itemQuant)
+        public ActionResult sellItem( string itemId, string quantity, string price, string itemQuant)
         {
             try
             {
                 var iditem = Int32.Parse(itemId);
-                var name1 = name;
                 int quant = Int32.Parse(quantity);
                 int itemquant = Int32.Parse(itemQuant);
                 var seller = new Guid(User.Identity.GetUserId());
@@ -117,9 +118,9 @@ namespace Labyrinth.Controllers
                 }
                 quantity = "";
                 price = "";
-                return View("SellItems", db.PlayerItems.Where(x => x.PlayerId == seller).ToList());
+                return RedirectToAction("sellItems");
 
-               
+
             }
             catch
             {
