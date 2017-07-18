@@ -26,3 +26,5 @@
 	     Worked on market, see your own sell items
 [15/7/2017]: Solved marketplace bugs, worked on design
 	     Implemented global and private chat
+[16/7/2017]: Implemented chat in all pages, created an initial screen for the game
+	     Modified Design
