@@ -24,3 +24,5 @@
 	     Worked on design 
 [14/7/2017]: Implemented global chat
 	     Worked on market, see your own sell items
+[15/7/2017]: Solved marketplace bugs, worked on design
+	     Implemented global and private chat
