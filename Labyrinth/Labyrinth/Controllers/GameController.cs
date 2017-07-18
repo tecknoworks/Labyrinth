@@ -9,13 +9,21 @@ using Microsoft.AspNet.Identity;
 
 namespace Labyrinth.Controllers
 {
+    [Authorize(Roles = "Administrator, Regular")]
     public class GameController : Controller
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Game
         public ActionResult Index()
         {
             return View();
+
+        }
+
+        public ActionResult Chat()
+        {
+            return View("Chat");
 
         }
 

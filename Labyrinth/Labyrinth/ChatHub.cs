@@ -22,18 +22,16 @@ namespace Labyrinth
         {
             var id = Context.ConnectionId;
 
-
-            if (ConnectedUsers.Count(x => x.ConnectionId == id) == 0)
+            if (ConnectedUsers.Count(x => x.UserName == userName) == 0)
             {
                 ConnectedUsers.Add(new UserDetail { ConnectionId = id, UserName = userName });
-
-                // send to caller
-                Clients.Caller.onConnected(id, userName, ConnectedUsers, CurrentMessage);
 
                 // send to all except caller client
                 Clients.AllExcept(id).onNewUserConnected(id, userName);
 
             }
+            // send to caller
+            Clients.Caller.onConnected(id, userName, ConnectedUsers, CurrentMessage);
 
         }
 

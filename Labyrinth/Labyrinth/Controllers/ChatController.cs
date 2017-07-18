@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Labyrinth.Controllers
 {
+    [Authorize(Roles = "Administrator, Regular")]
     public class ChatController : Controller
     {
         // GET: Chat

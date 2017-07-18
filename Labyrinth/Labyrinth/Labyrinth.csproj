@@ -265,7 +265,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="ChatHub.cs" />
-    <Compile Include="Common\Class1.cs" />
     <Compile Include="Common\MessageDetail.cs" />
     <Compile Include="Common\UserDetail.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -283,9 +282,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\_ChatHub.cs" />
-    <Compile Include="Hubs\MessageDetail.cs" />
-    <Compile Include="Hubs\UserDetail.cs" />
     <Compile Include="IISHandler1.cs" />
     <Compile Include="Migrations\201707111212561_initial.cs" />
     <Compile Include="Migrations\201707111212561_initial.Designer.cs">
@@ -603,6 +599,7 @@
     <Content Include="Views\PlayerDetails\Index.cshtml" />
     <Content Include="Views\Game\YouDied.cshtml" />
     <Content Include="Views\Chat\PrivateChat.cshtml" />
+    <Content Include="Views\Shared\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
