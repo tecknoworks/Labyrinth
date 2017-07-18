@@ -2,6 +2,14 @@
 @{
     ViewBag.Title = "GameView";
 }
+@using Microsoft.AspNet.Identity;
+@using Labyrinth.Models;
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+    var user = db.Players.Find(new Guid(User.Identity.GetUserId())).Nickname;
+}
+
+
 <link rel="stylesheet" type="text/css" media="screen" href="~/Content/Game/index.css">
 <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
