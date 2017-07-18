@@ -54,6 +54,9 @@ var game = {
 		me.input.bindKey(me.input.KEY.UP, "up");
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        //me.state.change(me.state.PLAY);
+
+        // display the menu title
+		me.state.change(me.state.MENU);
     }
 };

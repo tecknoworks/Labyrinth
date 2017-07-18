@@ -10,6 +10,11 @@ game.resources = [
         "src": "/Content/Game/data/img/meta_collide.png"
     },
     {
+        "name": "title_screen",
+        "type": "image",
+        "src": "/Content/Game/data/img/gui/title_screen.png"
+    },
+    {
         "name": "Blank_Sprite_Sheet_4_2_by_KnightYamato",
         "type": "image",
         "src": "/Content/Game/data/img/Blank_Sprite_Sheet_4_2_by_KnightYamato.png"
@@ -47,7 +52,7 @@ game.resources = [
     {
         "name": "title_screen",
         "type": "image",
-        "src": "/Content/Game/data/img/gui/title_screen.png"
+        "src": "/Content/Game/data/img/gui/title1_screen.png"
     },
     {
         "name": "mapabout_level_tiles",
