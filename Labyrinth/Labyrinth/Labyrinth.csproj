@@ -602,8 +602,6 @@
     <Content Include="Views\Market\SellItems.cshtml" />
     <Content Include="Views\PlayerDetails\Index.cshtml" />
     <Content Include="Views\Game\YouDied.cshtml" />
-    <Content Include="Views\Chat\Chat.cshtml" />
-    <Content Include="Views\Chat\Chat1to1.cshtml" />
     <Content Include="Views\Chat\PrivateChat.cshtml" />
   </ItemGroup>
   <ItemGroup>

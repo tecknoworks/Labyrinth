@@ -11,12 +11,9 @@ namespace Labyrinth.Controllers
         // GET: Chat
         public ActionResult Index()
         {
-            return View("Chat");
+            return View("PrivateChat");
         }
-        public ActionResult Chat()
-        {
-            return View();
-        }
+
 
         public ActionResult PrivateChat()
         {

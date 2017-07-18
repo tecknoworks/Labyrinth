@@ -1,8 +1,12 @@
 ﻿@{
     ViewBag.Title = "Chat";
 }
-
-
+@using Microsoft.AspNet.Identity;
+@using Labyrinth.Models;
+@{ 
+    ApplicationDbContext db = new ApplicationDbContext();
+    var user = db.Players.Find(new Guid(User.Identity.GetUserId())).Nickname;
+}
 @section scripts {
     <link type="text/css" rel="stylesheet" href="/Css/ChatStyle.css" />
     <link rel="stylesheet" href="/Css/JQueryUI/themes/base/jquery.ui.all.css">
@@ -67,7 +71,7 @@
 
             $("#btnStartChat").click(function () {
 
-                var name = $("#txtNickName").val();
+                var name = '@user';
                 if (name.length > 0) {
                     chatHub.server.connect(name);
                 }
@@ -319,7 +323,7 @@
 
         <div id="divChat" class="chatRoom">
             <div class="title">
-                Welcome to Chat Room [<span id='spanUser'></span>]
+                Labyrinth Chat Room [<span id='spanUser'></span>]
 
             </div>
             <div class="content">
