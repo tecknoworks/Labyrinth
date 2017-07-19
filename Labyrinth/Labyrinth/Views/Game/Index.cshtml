@@ -4,9 +4,18 @@
 }
 @using Microsoft.AspNet.Identity;
 @using Labyrinth.Models;
+@using System.Web.Script.Serialization;
 @{
     ApplicationDbContext db = new ApplicationDbContext();
-    var user = db.Players.Find(new Guid(User.Identity.GetUserId())).Nickname;
+    var userId = new Guid(User.Identity.GetUserId());
+    List<Tuple<string, PlayerItem>> items = new List<Tuple<string, PlayerItem>>();
+    string itName;
+    foreach (PlayerItem item in db.PlayerItems.Where(item => item.PlayerId == userId).ToList()){
+        itName = db.Items.Find(item.ItemId).Name;
+        items.Add(new Tuple<string, PlayerItem>(itName, item));
+    }
+    var serializer = new JavaScriptSerializer();
+    var serializedData = serializer.Serialize(items);
 }
 
 
@@ -41,15 +50,16 @@
 
 <script type="text/javascript" src="~/Content/Game/js/screens/title.js"></script>
 <script type="text/javascript" src="~/Content/Game/js/screens/play.js"></script>
+<s
 <!-- /build -->
 <!-- Bootstrap -->
 <script type="text/javascript">
     window.onReady(function onReady() {
-        var t0 = performance.now();
-
-        game.onload();
-        var t1 = performance.now();
-        alert("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+        //var t0 = performance.now();
+        var playerItems = '@Html.Raw(serializedData)';
+        game.onload(playerItems);
+       // var t1 = performance.now();
+        //alert("Call to doSomething took " + (t1 - t0) + " milliseconds.");
 
             });
 </script>

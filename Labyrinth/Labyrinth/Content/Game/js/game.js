@@ -3,16 +3,43 @@
 var game = {
 
 	// an object where to store game information
-	data : {
-		// score
-		score : 0
+    data : {
+        // score
+        score: 0,
+        lifes: 1,
+        ironGaze: false,
+        deathStone: 0,
+        stompy: false
 	},
 
 
     // Run on page load.
-    "onload" : function () {
+    "onload" : function (playerItems) {
+        //Initialize items of the player
+        var items = JSON.parse(playerItems);
+        alert(items);
+        for (var i = 0; i < items.length; i++) {
+            alert(items[i].Item1)
+            if (items[i].Item1 == 'LifeVial') {
+                this.data.lifes += items[i].Item2.Quantity;
+                alert(this.data.lifes);
+            }
+            if (items[i].Item1 == "IronGaze") {
+                this.data.ironGaze = true;
+                alert(this.data.ironGaze);
+            }
+            if (items[i].Item1 == "DeathStone") {
+                this.data.deathStone += items[i].Item2.Quantity;
+                alert(this.data.deathStone);
+            }
+            if (items[i].Item1 == "Stompy") {
+                this.data.stompy = true;
+                alert(this.data.stompy);
+            }
+        }
+
         // Initialize the video.
-        if (!me.video.init(1920, 1080, {wrapper : "screen", scale : 0.4, scaleMethod : "flex-width"})) {
+        if (!me.video.init(200, 150, {wrapper : "screen", scale : 4, scaleMethod : "flex-width"})) {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
