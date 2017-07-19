@@ -20,7 +20,7 @@
 
         <link type="text/css" rel="stylesheet" href="/Css/ChatStyle.css" />
         <link rel="stylesheet" href="/Css/JQueryUI/themes/base/jquery.ui.all.css">
-
+        <link href="~/Content/dashboard.css" rel="stylesheet">
 
 
 
@@ -46,7 +46,7 @@
         $(function () {
 
             setScreen(false);
-            debugger;
+            
             // Declare a proxy to reference the hub.
             var chatHub = $.connection.chatHub;
 
@@ -307,10 +307,11 @@
 
         }
 
-</script>}
+</script>
 
 </head>
 <body>
+   
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -335,57 +336,59 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            @{ if (User.Identity.IsAuthenticated){
-
-
-
-            <div id="header">
-                ChatRoom
+    <div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-3 main">
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
             </div>
-            <br />
-            <br />
-            <br />
+            <div class="col-sm-3 col-md-3 sidebar">
+                @{ if (User.Identity.IsAuthenticated)
+                    {
 
-            <div id="divContainer" style="color: black">
-                @*<div id="divLogin" class="login">
-                    <div>
-                        Your Name:<br />
-                        <input id="txtNickName" type="text" class="textBox" />
-                    </div>
-                    <div id="divButton">
-                        <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
-                    </div>
-                </div>*@
-
-                <div id="divChat" class="chatRoom">
-                    <div class="title">
-                        Labyrinth Chat Room [<span id='spanUser'></span>]
-
-                    </div>
-                    <div class="content">
-                        <div id="divChatWindow" class="chatWindow">
+                        <div id="header">
+                            ChatRoom
                         </div>
-                        <div id="divusers" class="users">
-                        </div>
-                    </div>
-                    <div class="messageBar">
-                        <input class="textbox" type="text" id="txtMessage" />
-                        <input id="btnSendMsg" type="button" value="Send" class="submitButton" />
-                    </div>
-                </div>
+                        <br />
+                        <br />
+                        <br />
 
-                <input id="hdId" type="hidden" />
-                <input id="hdUserName" type="hidden" />
+                        <div id="divContainer" style="color: black">
+                            @*<div id="divLogin" class="login">
+                                    <div>
+                                        Your Name:<br />
+                                        <input id="txtNickName" type="text" class="textBox" />
+                                    </div>
+                                    <div id="divButton">
+                                        <input id="btnStartChat" type="button" class="submitButton" value="Start Chat" />
+                                    </div>
+                                </div>*@
+
+                            <div id="divChat" class="chatRoom">
+                                <div class="title">
+                                    Labyrinth Chat Room [<span id='spanUser'></span>]
+
+                                </div>
+                                <div class="content">
+                                    <div id="divChatWindow" class="chatWindow">
+                                    </div>
+                                    <div id="divusers" class="users">
+                                    </div>
+                                </div>
+                                <div class="messageBar">
+                                    <input class="textbox" type="text" id="txtMessage" />
+                                    <input id="btnSendMsg" type="button" value="Send" class="submitButton" />
+                                </div>
+                            </div>
+
+                            <input id="hdId" type="hidden" />
+                            <input id="hdUserName" type="hidden" />
+                        </div>
+                        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>}}
             </div>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>}}
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        </div>
+        </div>
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
