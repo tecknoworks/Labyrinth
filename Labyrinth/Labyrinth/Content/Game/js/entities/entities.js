@@ -90,8 +90,16 @@ game.PlayerEntity = me.Entity.extend({
      * colision handler
      * (called when colliding with other objects)
      */
-    onCollision: function (/*response, other*/) {
+    onCollision: function (response, other) {
         // Make all other objects solid
+        if (response.b.body.collisionType == me.collision.types.NPC_OBJECT && !this.renderable.isFlickering()) {
+            this.renderable.flicker(750);
+            game.data.lifes -= 1;
+            if (game.data.lifes < 1) {
+                window.location.href = url.replace('__score__', game.data.score);
+            }
+
+        }
         return true;
     }
 });
@@ -133,6 +141,7 @@ game.EnemyEntity = me.Entity.extend({
         // define this here instead of tiled
         settings.image = "wheelie_right";
 
+
         // disable gravity
         me.sys.gravity = 0;
 
@@ -162,6 +171,8 @@ game.EnemyEntity = me.Entity.extend({
 
         // walking & jumping speed
         this.body.setVelocity(4, 6);
+
+        this.body.collisionType = me.collision.types.NPC_OBJECT;
 
     },
 
@@ -205,8 +216,8 @@ game.EnemyEntity = me.Entity.extend({
             // res.y >0 means touched by something on the bottom
             // which mean at top position for this one
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
-                this.renderable.flicker(750);
-                me.game.world.removeChild(this);
+                //this.renderable.flicker(750);
+                //me.game.world.removeChild(this);
             //    $.ajax({
             //        url: '/Game/YouDied',
             //        type: 'GET',
@@ -218,7 +229,7 @@ game.EnemyEntity = me.Entity.extend({
             //            alert("error");
             //    }
                 //});
-                window.location.href = url.replace('__score__', game.data.score);
+                
 
             }
             return false;

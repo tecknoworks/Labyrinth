@@ -19,6 +19,7 @@ game.HUD.Container = me.Container.extend({
 
         // add our child score object
         this.addChild(new game.HUD.ScoreItem(-10, -10));
+        this.addChild(new game.HUD.LifesItem(-170, -10));
     }
 });
 
@@ -67,5 +68,49 @@ game.HUD.ScoreItem = me.Renderable.extend({
         this.font.draw(renderer, game.data.score, me.game.viewport.width + this.pos.x, me.game.viewport.height + this.pos.y);
     }
 });
+/**
+ * a basic HUD item to display lifes
+ */
+game.HUD.LifesItem = me.Renderable.extend({
+    /**
+     * constructor
+     */
+    init: function (x, y) {
+        // call the parent constructor
+        // (size does not matter here)
+        this._super(me.Renderable, 'init', [x, y, 10, 10]);
 
+        // create the font object
+        this.font = new me.BitmapFont(me.loader.getBinary('PressStart2P'), me.loader.getImage('PressStart2P'));
+
+        // font alignment to right, bottom
+        this.font.textAlign = "right";
+        this.font.textBaseline = "bottom";
+
+
+        // local copy of the global score
+        this.lifes = -1;
+    },
+
+    /**
+     * update function
+     */
+    update: function (dt) {
+        // we don't do anything fancy here, so just
+        // return true if the score has been updated
+        if (this.lifes !== game.data.lifes) {
+            this.lifes = game.data.lifes;
+            return true;
+        }
+        return false;
+    },
+
+    /**
+     * draw the score
+     */
+    draw: function (renderer) {
+        // this.pos.x, this.pos.y are the relative position from the screen right bottom
+        this.font.draw(renderer, game.data.lifes, me.game.viewport.width + this.pos.x, me.game.viewport.height + this.pos.y);
+    }
+});
 

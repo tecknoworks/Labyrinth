@@ -17,24 +17,18 @@ var game = {
     "onload" : function (playerItems) {
         //Initialize items of the player
         var items = JSON.parse(playerItems);
-        alert(items);
         for (var i = 0; i < items.length; i++) {
-            alert(items[i].Item1)
             if (items[i].Item1 == 'LifeVial') {
                 this.data.lifes += items[i].Item2.Quantity;
-                alert(this.data.lifes);
             }
             if (items[i].Item1 == "IronGaze") {
                 this.data.ironGaze = true;
-                alert(this.data.ironGaze);
             }
             if (items[i].Item1 == "DeathStone") {
                 this.data.deathStone += items[i].Item2.Quantity;
-                alert(this.data.deathStone);
             }
             if (items[i].Item1 == "Stompy") {
                 this.data.stompy = true;
-                alert(this.data.stompy);
             }
         }
 
