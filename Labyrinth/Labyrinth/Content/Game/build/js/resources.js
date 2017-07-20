@@ -80,6 +80,11 @@ game.resources = [
         "src": "/Content/Game/data/img/sprite/spinning_coin_gold.png"
     },
     {
+        "name": "spike_trap",
+        "type": "image",
+        "src": "/Content/Game/data/img/sprite/spike_trap.png"
+    },
+    {
         "name": "wheelie_right",
         "type": "image",
         "src": "Content/Game/data/img/sprite/wheelie_right.png"

@@ -24,7 +24,12 @@
 	     Worked on design 
 [14/7/2017]: Implemented global chat
 	     Worked on market, see your own sell items
-[15/7/2017]: Solved marketplace bugs, worked on design
+[17/7/2017]: Solved marketplace bugs, worked on design
 	     Implemented global and private chat
-[16/7/2017]: Implemented chat in all pages, created an initial screen for the game
+[18/7/2017]: Implemented chat in all pages, created an initial screen for the game
 	     Modified Design
+[19/7/2017]: Implemented item transfer between database and game
+	     Implemented lifes in game
+	     Modified chat design
+[20/7/2017]: Implemented facebook login
+	     Added new objects (with functionality) in the game

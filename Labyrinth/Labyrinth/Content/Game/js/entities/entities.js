@@ -95,10 +95,13 @@ game.PlayerEntity = me.Entity.extend({
         if (response.b.body.collisionType == me.collision.types.NPC_OBJECT && !this.renderable.isFlickering()) {
             this.renderable.flicker(750);
             game.data.lifes -= 1;
-            if (game.data.lifes < 1) {
-                window.location.href = url.replace('__score__', game.data.score);
-            }
 
+        }
+        if (response.b.name == "TrapEntity") {
+            this.renderable.flicker(500);
+        }
+        if (game.data.lifes < 1 && response.b.body.collisionType != me.collision.types.WORLD_SHAPE) {
+            window.location.href = url.replace('__score__', game.data.score);
         }
         return true;
     }
@@ -113,14 +116,12 @@ game.CoinEntity = me.CollectableEntity.extend({
     init: function (x, y, settings) {
         // call the parent constructor
         this._super(me.CollectableEntity, 'init', [x, y, settings]);
-
     },
 
     // this function is called by the engine, when
-    // an object is touched by something (here collected)
+    // an object is touched by something (here collected)F
     onCollision: function (response, other) {
         // do something when collected
-
         // make sure it cannot be collected "again"
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.audio.play("cling");
@@ -132,6 +133,36 @@ game.CoinEntity = me.CollectableEntity.extend({
     }
 });
 
+/**
+ * a Trap entity
+ */
+game.TrapEntity = me.CollectableEntity.extend({
+    // extending the init function is not mandatory
+    // unless you need to add some extra initialization
+    init: function (x, y, settings) {
+        // call the parent constructor
+        this._super(me.CollectableEntity, 'init', [x, y, settings]);
+    },
+
+    // this function is called by the engine, when
+    // an object is touched by something (here collected)
+    onCollision: function (response, other) {
+        // do something when collected
+        // make sure it cannot be collected "again"
+        game.data.stompy = false;
+        if (game.data.stompy == true) {
+            this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+        }
+        else {
+            response.b.renderable.flicker(750);
+            game.data.lifes -= 1;
+            // remove it
+            me.game.world.removeChild(this);
+        }
+
+        return false
+    }
+});
 
 /**
  * an enemy Entity

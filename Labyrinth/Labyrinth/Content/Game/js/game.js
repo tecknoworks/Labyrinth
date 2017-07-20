@@ -33,7 +33,7 @@ var game = {
         }
 
         // Initialize the video.
-        if (!me.video.init(200, 150, {wrapper : "screen", scale : 4, scaleMethod : "flex-width"})) {
+        if (!me.video.init(640, 480, {wrapper : "screen", scale : 4, scaleMethod : "flex-width"})) {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
@@ -67,6 +67,7 @@ var game = {
 		me.pool.register("mainPlayer", game.PlayerEntity);
 		me.pool.register("CoinEntity", game.CoinEntity);
 		me.pool.register("EnemyEntity", game.EnemyEntity);
+		me.pool.register("TrapEntity", game.TrapEntity);
 		
 		// enable the keyboard
 		me.input.bindKey(me.input.KEY.LEFT,  "left");

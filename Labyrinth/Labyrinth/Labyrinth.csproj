@@ -20,7 +20,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -321,7 +321,10 @@
     <Content Include="Content\Game\data\img\map\map2_level_tiles.png" />
     <Content Include="Content\Game\data\img\map\mapabout_level_tiles.png" />
     <Content Include="Content\Game\data\img\meta_collide.png" />
+    <Content Include="Content\Game\data\img\sprite\dog.PNG" />
+    <Content Include="Content\Game\data\img\sprite\fb.png" />
     <Content Include="Content\Game\data\img\sprite\gripe_run_right.png" />
+    <Content Include="Content\Game\data\img\sprite\spike_trap.png" />
     <Content Include="Content\Game\data\img\sprite\spinning_coin_gold.png" />
     <Content Include="Content\Game\data\img\sprite\wheelie_right.png" />
     <Content Include="Content\Game\data\map\area01_bkg0.png" />
@@ -1230,11 +1233,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4186</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4186/</IISUrl>
+          <IISUrl>https://localhost:44395/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
