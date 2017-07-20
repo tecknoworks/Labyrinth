@@ -50,10 +50,10 @@
 
 .chatRoom
 {
-    width: 350px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
-    border: solid 5px gray;
+   /* border: solid 5px gray;*/
 }
 
     .chatRoom .title
@@ -69,15 +69,17 @@
     {
         height: 300px;
         clear: both;
+       
     }
 
         .chatRoom .content .chatWindow
         {
             float: left;
             width: 250px;
-            height: 300px;
-            border-right: solid 1px #5f9482;
-            overflow-y: scroll;
+            height: 100%;
+            /*border-right: solid 1px #5f9482;*/
+            overflow-y: auto;/*scroll*/
+           
         }
 
             .chatRoom .content .chatWindow .message
@@ -93,8 +95,8 @@
         .chatRoom .content .users
         {
             float: left;
-            width: 75px;
-            height: 300px;
+            width: auto;
+            height: 100%;
         }
 
             .chatRoom .content .users .user
