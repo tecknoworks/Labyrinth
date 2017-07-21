@@ -149,7 +149,6 @@ game.TrapEntity = me.CollectableEntity.extend({
     onCollision: function (response, other) {
         // do something when collected
         // make sure it cannot be collected "again"
-        game.data.stompy = false;
         if (game.data.stompy == true) {
             this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         }
