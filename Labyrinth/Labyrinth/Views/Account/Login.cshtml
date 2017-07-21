@@ -39,7 +39,9 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Log in" class="btn btn-default" />
+                        <input id="btnFacebookLogin" class="btn btn-success" type="button" value="Login with Facebook"/>
                     </div>
+
                 </div>
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
@@ -60,4 +62,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnFacebookLogin').click(function () {
+                window.location.href = "api/Account/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44395%2FLogin.html&state=GerGr5JlYx4t_KpsK57GFSxVueteyBunu02xJTak5m01";
+            });
+        });
+        </script>
 }

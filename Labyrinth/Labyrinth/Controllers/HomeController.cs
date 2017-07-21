@@ -11,7 +11,8 @@ namespace Labyrinth.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "Game");
+            return View();
+            //return RedirectToAction("Index", "Game");
         }
 
         public ActionResult About()
