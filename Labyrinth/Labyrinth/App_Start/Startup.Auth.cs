@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Labyrinth.Models;
+using Microsoft.Owin.Security.Facebook;
+using Labyrinth.Facebook;
 
 namespace Labyrinth
 {
@@ -55,14 +57,17 @@ namespace Labyrinth
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //   appId: "315116632281038",
+            //   appSecret: "da0d851ab99dd60c6d675af947c11792");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseFacebookAuthentication(new FacebookAuthenticationOptions
+            {
+                AppId = "315116632281038",
+                AppSecret = "da0d851ab99dd60c6d675af947c11792",
+                BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                UserInformationEndpoint = "https://graph.facebook.com/v2.10/me?fields=id,name,email,first_name,last_name,location",
+                Scope = { "email" }
+            });
         }
     }
 }
