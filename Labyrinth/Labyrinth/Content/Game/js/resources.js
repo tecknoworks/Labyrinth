@@ -12,7 +12,8 @@ game.resources = [
  	 */
 	{ name: "map1", type: "tmx", src: "/Content/Game/data/map/map1.tmx" },
     { name: "map2", type: "tmx", src: "/Content/Game/data/map/map2.tmx" },
-    { name: "map2", type: "tmx", src: "/Content/Game/data/map/mapabout.tmx" },
+    { name: "mapabout", type: "tmx", src: "/Content/Game/data/map/mapabout.tmx" },
+    { name: "map3", type: "tmx", src: "/Content/Game/data/map/map3.tmx" },
 
 	/* 
 	 * Background music. 
