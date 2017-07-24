@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<Labyrinth.Models.Player>
 
+@using Microsoft.AspNet.Identity;
+@using Labyrinth.Models;
 @{
     ViewBag.Title = "Index";
+    var idUser = new Guid(User.Identity.GetUserId());
 }
-
 <h2>Leader board </h2>
 <img src="~/Content/Images/crown.png" width="50" height="50" />
 
@@ -24,7 +26,32 @@
     }
     @foreach (var item in Model)
     {
-        
+        if (item.Id == idUser)
+        {
+            
+                <tr>
+                    <td>
+                        <font color="red">
+                        @counter  ME
+                            </font>
+                    </td>
+                    <td>
+                        <font color="red">
+                        @Html.DisplayFor(modelItem => item.Nickname)
+                            </font>
+                    </td>
+
+                    <td>
+                        <font color="red">
+                        @Html.DisplayFor(modelItem => item.Points)
+                            </font>
+                    </td>
+
+                </tr>
+                counter = counter + 1;
+        }
+        else
+        {
         <tr>
             <td>
                 @counter
@@ -38,7 +65,8 @@
             </td>
            
         </tr>
-        counter = counter + 1;
+            counter = counter + 1;
+        }
     }
 
 </table>
