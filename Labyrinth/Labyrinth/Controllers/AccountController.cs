@@ -17,10 +17,8 @@ namespace Labyrinth.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        //private PlayersController _playersController;
-
         private ApplicationDbContext db = new ApplicationDbContext();
-
+ 
         public AccountController()
         {
         }
@@ -164,18 +162,9 @@ namespace Labyrinth.Controllers
                     Player player = new Player();
                     player.Id = new Guid(user.Id);
                     player.Nickname = model.Nickname;
-
-                    //_playersController = new PlayersController();
-                    //await _playersController.Create(player);
-
+                    
                     db.Players.Add(player);
                     await db.SaveChangesAsync();
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -222,13 +211,6 @@ namespace Labyrinth.Controllers
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
-
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -358,9 +340,6 @@ namespace Labyrinth.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    //return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email,Nickname = loginInfo.DefaultUserName});
-
-
                     if (User.Identity.IsAuthenticated)
                     {
                         return RedirectToAction("Index", "Manage");
@@ -380,27 +359,15 @@ namespace Labyrinth.Controllers
                         {
                             resultCreateUser = await UserManager.AddLoginAsync(user.Id, info.Login);
                             if (resultCreateUser.Succeeded)
-                            {
-                                //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                                //return RedirectToLocal(returnUrl);
+                            { 
                                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                                 Player player = new Player();
                                 player.Id = new Guid(user.Id);
                                 player.Nickname = loginInfo.DefaultUserName;
-
-                                //_playersController = new PlayersController();
-                                //await _playersController.Create(player);
-
                                 db.Players.Add(player);
                                 await db.SaveChangesAsync();
-
-                                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                                // Send an email with this link
-                                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                                
                                 return RedirectToAction("Index", "Home");
                             }
                         }
@@ -410,63 +377,6 @@ namespace Labyrinth.Controllers
                     return View();
 
             }
-        }
-
-        //
-        // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
-
-            if (ModelState.IsValid)
-            {
-                // Get the information about the user from the external login provider
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
-                    {
-                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        //return RedirectToLocal(returnUrl);
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                        Player player = new Player();
-                        player.Id = new Guid(user.Id);
-                        player.Nickname = model.Nickname;
-
-                        //_playersController = new PlayersController();
-                        //await _playersController.Create(player);
-
-                        db.Players.Add(player);
-                        await db.SaveChangesAsync();
-
-                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                AddErrors(result);
-            }
-
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
         }
 
         //

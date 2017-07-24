@@ -50,7 +50,6 @@ namespace Labyrinth.Controllers
                     db.PlayerItems.Add(newPlayerItem);
                 }
                 db.SaveChanges();
-                //return Content("<script language='javascript' type='text/javascript'>alert('Thanks for Feedback!');</script>");
                 return RedirectToAction("Index");
             }
             else
