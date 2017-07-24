@@ -4,6 +4,7 @@
 @using Labyrinth.Models;
 @{
     ViewBag.Title = "Index";
+    ApplicationDbContext db = new ApplicationDbContext();
     var idUser = new Guid(User.Identity.GetUserId());
 }
 <h2>Leader board </h2>
@@ -20,6 +21,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Points)
         </th>
+        @if (User.IsInRole("Administrator"))
+        {
+            <td>Ban user</td>
+        }
     </tr>
     @{
         int counter = 1;
@@ -46,9 +51,15 @@
                         @Html.DisplayFor(modelItem => item.Points)
                             </font>
                     </td>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <td>@Html.ActionLink("Ban", "banUser", new { id = item.Id })</td>
+                    }
 
                 </tr>
-                counter = counter + 1;
+            counter = counter + 1;
+
+            
         }
         else
         {
@@ -63,6 +74,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Points)
             </td>
+            @if (User.IsInRole("Administrator"))
+                    {
+                <td>@Html.ActionLink("Ban", "banUser", new { id = item.Id })</td>
+            }
            
         </tr>
             counter = counter + 1;

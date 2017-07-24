@@ -16,5 +16,10 @@ namespace Labyrinth.Controllers
             IOrderedEnumerable<Player> players = db.Players.ToList().OrderByDescending(x => x.Points);
             return View(players);
         }
+        public ActionResult banUser()
+        {
+            IOrderedEnumerable<Player> players = db.Players.ToList().OrderByDescending(x => x.Points);
+            return View(players);
+        }
     }
 }
