@@ -5,9 +5,10 @@ namespace Labyrinth.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+       
         public string Email { get; set; }
+        
+        public string Nickname { get; set; }
     }
 
     public class ExternalLoginListViewModel
