@@ -324,9 +324,12 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Play", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("LeaderBoard", "Index", "LeaderBoard")</li>
                     <li>@Html.ActionLink("Market", "Index", "Market")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("MailPlayers", "Mail", "Home")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
