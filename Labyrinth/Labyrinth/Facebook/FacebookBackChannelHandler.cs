@@ -14,7 +14,7 @@ namespace Labyrinth.Facebook
         {
             if (!request.RequestUri.AbsolutePath.Contains("/oauth"))
             {
-                request.RequestUri = new Uri(request.RequestUri.AbsoluteUri.Replace("?access_token", "&access_token"));
+                request.RequestUri = new Uri(request.RequestUri.AbsoluteUri.Replace("?access_token", "&amp;access_token"));
             }
             return await base.SendAsync(request, cancellationToken);
         }

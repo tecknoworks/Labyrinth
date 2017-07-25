@@ -8,6 +8,9 @@ using Owin;
 using Labyrinth.Models;
 using Microsoft.Owin.Security.Facebook;
 using Labyrinth.Facebook;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using System.Web.Helpers;
 
 namespace Labyrinth
 {
@@ -60,14 +63,38 @@ namespace Labyrinth
             //   appId: "315116632281038",
             //   appSecret: "da0d851ab99dd60c6d675af947c11792");
 
-            app.UseFacebookAuthentication(new FacebookAuthenticationOptions
+            //app.UseFacebookAuthentication(new FacebookAuthenticationOptions
+            //{
+            //    AppId = "315116632281038",
+            //    AppSecret = "da0d851ab99dd60c6d675af947c11792",
+            //    BackchannelHttpHandler = new FacebookBackChannelHandler(),
+            //    UserInformationEndpoint = "https://graph.facebook.com/v2.10/me?fields=id,name,email,first_name,last_name,location",
+            //    Scope = { "email" }
+            //});
+
+            // Facebook 
+            var facebookOptions = new FacebookAuthenticationOptions
             {
                 AppId = "315116632281038",
                 AppSecret = "da0d851ab99dd60c6d675af947c11792",
                 BackchannelHttpHandler = new FacebookBackChannelHandler(),
                 UserInformationEndpoint = "https://graph.facebook.com/v2.10/me?fields=id,name,email,first_name,last_name,location",
-                Scope = { "email" }
-            });
+                Provider = new FacebookAuthenticationProvider
+                {
+                    OnAuthenticated = context =>
+                    {
+                        context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken)); // user acces token needed for posting on the wall 
+                        return Task.FromResult(true);
+                    }
+                }
+            };
+            facebookOptions.Scope.Add("email");
+            facebookOptions.Scope.Add("publish_actions"); // permission needed for posting on the wall 
+            facebookOptions.Scope.Add("publish_pages"); // permission needed for posting on the page
+            app.UseFacebookAuthentication(facebookOptions);
+
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }
     }
+
 }
