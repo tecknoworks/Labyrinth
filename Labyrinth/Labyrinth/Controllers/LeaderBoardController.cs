@@ -1,4 +1,7 @@
-﻿using Labyrinth.Models;
+﻿using Labyrinth;
+using Labyrinth.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +19,16 @@ namespace Labyrinth.Controllers
             IOrderedEnumerable<Player> players = db.Players.ToList().OrderByDescending(x => x.Points);
             return View(players);
         }
-        public ActionResult banUser()
+        public ActionResult banUser(Guid id)
         {
-            IOrderedEnumerable<Player> players = db.Players.ToList().OrderByDescending(x => x.Points);
-            return View(players);
+            ApplicationUser user = db.Users.Where(u => u.Id == id.ToString() ).FirstOrDefault();
+            var database = new UserStore<ApplicationUser>(db);
+            var manager = new UserManager<ApplicationUser>(database);
+            manager.AddToRole(user.Id, "Banned");
+            manager.RemoveFromRole(user.Id, "Regular");
+            manager.RemoveFromRole(user.Id, "Administrator");
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

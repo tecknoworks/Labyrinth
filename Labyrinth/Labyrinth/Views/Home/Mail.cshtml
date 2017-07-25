@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Mail Players";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<font size="10">
+    Message to send to players:
+</font>
+<div>
+    @using (Html.BeginForm("sendMail", "Home"))
+    {
+        <input type="text" name="message" />
+        <input type="submit" value="Send Mail">
+    }
+</div>
