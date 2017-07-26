@@ -1,4 +1,7 @@
-﻿using Labyrinth.Common;
+﻿using Labyrinth;
+using Labyrinth.Common;
+using Microsoft.AspNet.Identity;
+using Labyrinth.Models;
 using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
@@ -18,7 +21,7 @@ namespace Labyrinth
 
         #region Methods
 
-        public void Connect(string userName)
+        public void Connect(string hubId, string userName)
         {
             var id = Context.ConnectionId;
 
@@ -89,6 +92,18 @@ namespace Labyrinth
 
             if (CurrentMessage.Count > 100)
                 CurrentMessage.RemoveAt(0);
+        }
+
+        public void boughtItem(string sellerNick, string itemName, string userNick )
+        {
+
+            var toUserId = ConnectedUsers.Where(x => x.UserName == sellerNick);
+            string message = userNick + " has bought " + itemName + "(s) from you!";
+            var clients = ConnectedUsers;
+            Clients.Client(toUserId.First().ConnectionId).boughtItem(message);
+            //Clients.Client(toUserId).
+            //Clients.All.boughtItem(message);
+
         }
 
         #endregion

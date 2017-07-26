@@ -4,23 +4,34 @@
 @{
     ViewBag.Title = "Index";
     ApplicationDbContext db = new ApplicationDbContext();
-    var gold = db.Players.Find(new Guid(User.Identity.GetUserId())).Gold;
+    var user = db.Players.Find(new Guid(User.Identity.GetUserId()));
+    var gold = user.Gold;
+    var userNickname = user.Nickname;
+    var userId = user.Id;
 }
 <h1> My Gold:</h1> <span class="badge"><font size="8"> @gold </font></span>
 <h2>Market</h2>
 <script>
-    function NoGold(idI, price) {
+    function NoGold(idI, price, playerNick, itemName, userNick) {
+        debugger
         if (price > '@gold') {
             alert("Not enough gold");
         }
         else {
+            var chatHub = $.connection.chatHub;
+
+            // Start Hub
+            $.connection.hub.start().done(function () {
+                chatHub.server.boughtItem(playerNick, itemName, userNick);
+
+            });
             var url = '@Url.Action("buyItem", "Market", new { id = -1 })';
             url = url.replace('-1', idI);
             window.location = url;
         }
     }
+    
 </script>
-
 <table class="table table-hover table-bordered">
     <tr class="trcolor">
         <th>
@@ -67,7 +78,7 @@
             </td>
             <td>
                     @*@Html.ActionLink("Buy Item", "buyItemwaaw", new { id = item.Id })*@
-                <input type="button" class="btn-link" value="Buy" onclick="NoGold(@item.Id, @item.Price)" />
+                <input type="button" class="btn-link" value="Buy" onclick="NoGold(@item.Id, @item.Price, '@item.Player.Nickname', '@item.Item.Name', '@userNickname')" />
  
             </td>
         </tr>
