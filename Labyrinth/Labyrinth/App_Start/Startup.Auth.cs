@@ -89,6 +89,8 @@ namespace Labyrinth
                 }
             };
             facebookOptions.Scope.Add("email");
+           // facebookOptions.Scope.Add("publish_stream");
+            //facebookOptions.Scope.Add("user_posts");
             facebookOptions.Scope.Add("publish_actions"); // permission needed for posting on the wall 
             facebookOptions.Scope.Add("publish_pages"); // permission needed for posting on the page
             app.UseFacebookAuthentication(facebookOptions);

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Labyrinth.Models;
+using Facebook;
 
 namespace Labyrinth.Controllers
 {
@@ -340,6 +341,12 @@ namespace Labyrinth.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+
+                    var fb = new FacebookClient(loginInfo.ExternalIdentity.Claims.FirstOrDefault(x => x.Type == "FacebookAccessToken").Value);
+                    dynamic userFbData = fb.Get("me");
+
+
+
                     if (User.Identity.IsAuthenticated)
                     {
                         return RedirectToAction("Index", "Manage");
@@ -355,12 +362,18 @@ namespace Labyrinth.Controllers
                         }
                         var user = new ApplicationUser { UserName = loginInfo.Email, Email = loginInfo.Email };
                         var resultCreateUser = await UserManager.CreateAsync(user);
+                        UserManager.AddToRole(user.Id, "Regular");
+
+                      //  fb.Post("feed", new { message = "logged in " });
+
                         if (resultCreateUser.Succeeded)
                         {
                             resultCreateUser = await UserManager.AddLoginAsync(user.Id, info.Login);
                             if (resultCreateUser.Succeeded)
                             { 
                                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                                await StoreFacebookAuthToken(user);
 
                                 Player player = new Player();
                                 player.Id = new Guid(user.Id);
@@ -377,6 +390,42 @@ namespace Labyrinth.Controllers
                     return View();
 
             }
+        }
+
+        private async Task StoreFacebookAuthToken(ApplicationUser user)
+        {
+            var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+            if (claimsIdentity != null)
+            {
+                // Retrieve the existing claims for the user and add the FacebookAccessTokenClaim
+                var currentClaims = await UserManager.GetClaimsAsync(user.Id);
+                var facebookAccessToken = claimsIdentity.FindAll("FacebookAccessToken").First();
+                if (currentClaims.Count() <= 0)
+                {
+                    await UserManager.AddClaimAsync(user.Id, facebookAccessToken);
+                }
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult FacebookPost()
+        {
+            return View();
+            
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> FacebookPost(string txtMessage)
+        {
+            var claimsforUser = await UserManager.GetClaimsAsync(User.Identity.GetUserId());
+            var access_token = claimsforUser.FirstOrDefault(x => x.Type == "FacebookAccessToken").Value;
+            var fb = new FacebookClient(access_token);
+
+            dynamic result = fb.Post("feed", new { message = txtMessage });
+
+            return RedirectToAction("Index", "Home");
         }
 
         //

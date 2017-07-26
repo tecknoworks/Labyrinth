@@ -6,3 +6,14 @@
 <h2>YouDied</h2>
 Congratz
 
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <div class="editor-field">
+            <textarea name="txtMessage"></textarea>
+        </div>
+        <p>
+            <input type="submit" value="Post" />
+        </p>
+    </fieldset>
+}
