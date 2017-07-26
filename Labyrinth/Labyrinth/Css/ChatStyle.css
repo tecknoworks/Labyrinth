@@ -192,3 +192,29 @@
            margin-left:4px;
             width: 55px;
         }
+#notification {
+    position:fixed;
+    top:60px; /* Set to 0 or wherever */
+    width:585px; /* set to 100% if space is available */
+    left:480px;
+    z-index:105;
+    text-align:center;
+    font-weight:normal;
+    font-size:14px;
+    font-weight:bold;
+    color:white;
+    background-color:#FF7800;
+    padding:5px;
+}
+#notification span.dismiss {
+    border:2px solid #FFF;
+    padding:0 5px;
+    cursor:pointer;
+    float:right;
+    margin-right:10px;
+}
+#notification a {
+    color:white;
+    text-decoration:none;
+    font-weight:bold
+}

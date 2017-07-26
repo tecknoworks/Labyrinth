@@ -11,9 +11,12 @@
     @{
         ApplicationDbContext db = new ApplicationDbContext();
         var user = "";
+        var hubId = "";
         if (User.Identity.IsAuthenticated)
         {
-            user = db.Players.Find(new Guid(User.Identity.GetUserId())).Nickname;
+            var userLogged = db.Players.Find(new Guid(User.Identity.GetUserId()));
+            user = userLogged.Nickname;
+            hubId = userLogged.Id.ToString();
         }
     }
     <script src="/Scripts/jquery-1.8.2.min.js"></script>
@@ -79,9 +82,10 @@
         function registerEvents(chatHub) {
 
 
-                var name = '@user';
+            var name = '@user';
+            var hubId = '@hubId'
                 if (name.length > 0) {
-                    chatHub.server.connect(name);
+                    chatHub.server.connect(hubId, name);
                 }
 
 
@@ -114,6 +118,13 @@
 
         function registerClientMethods(chatHub) {
 
+            chatHub.client.boughtItem = function (message) {
+                $("#notification").fadeIn("slow").append(message);
+                $(".dismiss").click(function () {
+                    $("#notification").fadeOut("slow");
+                });
+
+            };
             // Calls when user successfully logged in
             chatHub.client.onConnected = function (id, userName, allUsers, messages) {
 
@@ -308,6 +319,9 @@
 
 </head>
 <body>
+    <div id="notification" style="display: none;">
+        <span class="dismiss"><a title="dismiss this notification">X</a></span>
+    </div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
