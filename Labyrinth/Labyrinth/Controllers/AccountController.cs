@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Labyrinth.Models;
 using Facebook;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Labyrinth.Controllers
 {
