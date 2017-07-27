@@ -100,8 +100,48 @@ game.PlayerEntity = me.Entity.extend({
         if (response.b.name == "TrapEntity") {
             this.renderable.flicker(500);
         }
+
+        if (response.b.name == "EndGameEntity") {
+            $.ajax({
+                url: '/Game/Update',
+                type: 'POST',
+                data: {
+                    lifes: game.data.lifes,
+                    score: game.data.score,
+                    deathStones: game.data.deathStone,
+                    //ironGaze: game.data.ironGaze,
+                    //stompy: game.data.stompy
+                },
+                success: function (data) {
+                   
+                },
+                error: function (data) {
+                   
+                }
+            });
+            //window.location.href = "/Game/EndGame";
+        }
+
         if (game.data.lifes < 1 && response.b.body.collisionType != me.collision.types.WORLD_SHAPE) {
-            window.location.href = url.replace('__score__', game.data.score);
+            //window.location.href = url.replace('__score__', game.data.score);
+            $.ajax({
+                url: '/Game/Update',
+                type: 'POST',
+                data: {
+                    lifes: game.data.lifes,
+                    score: game.data.score,
+                    deathStones: game.data.deathStone,
+                    //ironGaze: game.data.ironGaze,
+                    //stompy: game.data.stompy
+                },
+                success: function (data) {
+                    
+                },
+                error: function (data) {
+                    
+                }
+            });
+            window.location.href = "/Game/EndGame";
         }
         return true;
     }
@@ -132,7 +172,25 @@ game.CoinEntity = me.CollectableEntity.extend({
         return false
     }
 });
+/**
+ * an EndGame entity
+ */
+game.EndGameEntity = me.Entity.extend({
+    // extending the init function is not mandatory
+    // unless you need to add some extra initialization
+    init: function (x, y, settings) {
+        // call the parent constructor
+        this._super(me.Entity, 'init', [x, y, settings]);
+    },
 
+    // this function is called by the engine, when
+    // an object is touched by something (here collected)F
+    onCollision: function (response, other) {
+        if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+            this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+        }
+    }
+});
 /**
  * a Trap entity
  */

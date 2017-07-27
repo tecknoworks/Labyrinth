@@ -68,6 +68,7 @@ var game = {
 		me.pool.register("CoinEntity", game.CoinEntity);
 		me.pool.register("EnemyEntity", game.EnemyEntity);
 		me.pool.register("TrapEntity", game.TrapEntity);
+		me.pool.register("EndGameEntity", game.EndGameEntity);
 		
 		// enable the keyboard
 		me.input.bindKey(me.input.KEY.LEFT,  "left");

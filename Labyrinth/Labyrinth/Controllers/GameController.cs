@@ -21,9 +21,45 @@ namespace Labyrinth.Controllers
 
         }
 
+        public ActionResult EndGame()
+        {
+            return View("EndGame");
+
+        }
+
         public ActionResult Chat()
         {
             return View("Chat");
+
+        }
+
+        public ActionResult Update(int lifes,int score,int deathStones)
+        {
+            var userId = new Guid(User.Identity.GetUserId());
+            var playerItems = db.PlayerItems.Where(m => m.PlayerId == userId);
+            db.Players.Find(userId).Gold += score;
+            db.Players.Find(userId).Points += score;
+            foreach (var item in playerItems)
+            {
+                //if (item.Item.Name == "LifeVial")
+                //{
+                //    item.Quantity = lifes;
+                //}
+                //if (item.Item.Name == "IronGaze")
+                //{
+                //    this.data.ironGaze = true;
+                //}
+                //if (item.Item.Name == "DeathStone")
+                //{
+                //    item.Quantity = deathStones;
+                //}
+                //if (item.Item.Name == "Stompy")
+                //{
+                //    this.data.stompy = true;
+                //}
+            }
+            db.SaveChanges();
+            return RedirectToAction("EndGame", "Game");
 
         }
 

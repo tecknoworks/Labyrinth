@@ -614,6 +614,7 @@
     <Content Include="Views\Chat\PrivateChat.cshtml" />
     <Content Include="Views\Shared\Chat.cshtml" />
     <Content Include="Views\Account\FacebookPost.cshtml" />
+    <Content Include="Views\Game\EndGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
