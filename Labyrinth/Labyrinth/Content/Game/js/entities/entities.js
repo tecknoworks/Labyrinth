@@ -119,7 +119,7 @@ game.PlayerEntity = me.Entity.extend({
                    
                 }
             });
-            //window.location.href = "/Game/EndGame";
+            setTimeout(function () { window.location.href = "/Game/EndGame"; }, 500);
         }
 
         if (game.data.lifes < 1 && response.b.body.collisionType != me.collision.types.WORLD_SHAPE) {
@@ -141,7 +141,7 @@ game.PlayerEntity = me.Entity.extend({
                     
                 }
             });
-            window.location.href = "/Game/EndGame";
+            setTimeout(function () { window.location.href = "/Game/EndGame"; }, 500);
         }
         return true;
     }

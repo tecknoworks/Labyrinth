@@ -35,3 +35,6 @@
 	     Added new objects (with functionality) in the game
 [21/7/2017]: Worked on game new map and facebook login
 [24/7/2017]: Completed facebook login, added new map to game
+...
+...
+[27/7/2017]: Completed basic app, published app
