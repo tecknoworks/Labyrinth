@@ -377,7 +377,7 @@ namespace Labyrinth.Controllers
                             resultCreateUser = await UserManager.AddLoginAsync(user.Id, info.Login);
                             if (resultCreateUser.Succeeded)
                             { 
-                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                                 await StoreFacebookAuthToken(user);
 
