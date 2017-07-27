@@ -368,7 +368,7 @@ namespace Labyrinth.Controllers
                         }
                         var user = new ApplicationUser { UserName = loginInfo.Email, Email = loginInfo.Email };
                         var resultCreateUser = await UserManager.CreateAsync(user);
-                        UserManager.AddToRole(user.Id, "Regular");
+                        //UserManager.AddToRole(user.Id, "Regular");
 
                       //  fb.Post("feed", new { message = "logged in " });
 
@@ -391,8 +391,11 @@ namespace Labyrinth.Controllers
                             }
                         }
                         AddErrors(resultCreateUser);
+                        UserManager.AddToRole(user.Id, "Regular");
+
                     }
                     ViewBag.ReturnUrl = returnUrl;
+
                     return View();
 
             }
