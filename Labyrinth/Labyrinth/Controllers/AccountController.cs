@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Labyrinth.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Labyrinth.Controllers
 {
@@ -88,7 +89,7 @@ namespace Labyrinth.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return RedirectToAction("Index","Game");
             }
         }
 
@@ -157,13 +158,17 @@ namespace Labyrinth.Controllers
                 if (result.Succeeded)
                 {
                     
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     Player player = new Player();
                     player.Id = new Guid(user.Id);
                     player.Nickname = model.Nickname;
                     
                     db.Players.Add(player);
+
+                    var _context = new ApplicationDbContext();
+                    var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+                    UserManager.AddToRole(user.Id, "Regular");
                     await db.SaveChangesAsync();
 
                     return RedirectToAction("Index", "Home");
