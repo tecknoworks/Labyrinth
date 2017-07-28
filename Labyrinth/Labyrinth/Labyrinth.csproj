@@ -524,6 +524,8 @@
     <Content Include="Content\Game\package.json" />
     <Content Include="Content\Game\README.md" />
     <Content Include="Images\notify.ogg" />
+    <Content Include="Content\Game\data\map\map4.tmx" />
+    <None Include="Properties\PublishProfiles\LabyrinthGame - Web Deploy %282%29.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
